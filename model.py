@@ -69,8 +69,8 @@ class Discriminator(nn.Module):
         # 8 x 8 x 256
         self.conv4 = SpectralNorm(nn.Conv2d(256, 256, 4, stride=2, padding=(1,1)))
         # 4 x 4 x 256
-        self.conv5 = SpectralNorm(nn.Conv2d(256, 256, 4, stride=2, padding=(1,1)))
-        # 1 x 1 x 256
+        self.conv5 = SpectralNorm(nn.Conv2d(256, 256, 4, stride=2, padding=(0,0)))
+        # 2 x 2 x 256
         self.fc = SpectralNorm(nn.Linear(256, 1))
 
     def forward(self, x):
@@ -96,7 +96,7 @@ class Encoder(nn.Module):
         self.conv4 = SpectralNorm(nn.Conv2d(256, 256, 4, stride=2, padding=(1,1)))
         # 4 x 4 x 256
         self.conv5 = SpectralNorm(nn.Conv2d(256, 256, 4, stride=2, padding=(0,0)))
-        # 1 x 1 x 256
+        # 2 x 2 x 256
         self.fc = SpectralNorm(nn.Linear(1 * 1 * 256, latent_size))
 
     def forward(self, x):
