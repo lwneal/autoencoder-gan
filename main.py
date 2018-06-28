@@ -141,6 +141,9 @@ def train(epoch, ts, max_batches=100):
 
         ts.print_every(n_sec=4)
 
+    filename = 'reconstruction_epoch_{:04d}.png'.format(epoch)
+    imutil.show([current_frame, encoded], caption='Real vs. Reconstruction', filename=filename)
+
     scheduler_e.step()
     scheduler_d.step()
     scheduler_g.step()
